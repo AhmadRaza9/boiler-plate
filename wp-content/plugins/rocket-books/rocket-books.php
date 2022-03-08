@@ -108,6 +108,10 @@ run_rocket_books();
  * 1. code should be as minium as possible
  * 2. custom post type should be visible in wordpress admin section
  */
-add_action('init', function () {
-    register_post_type('chairs', array('public' => true));
-});
+// add_action('init', function () {
+//     register_post_type('product', array(
+//         'public' => true,
+//         'label' => 'Products',
+//         'menu_icon' => 'dashicons-screenoptions',
+//     ));
+// });
