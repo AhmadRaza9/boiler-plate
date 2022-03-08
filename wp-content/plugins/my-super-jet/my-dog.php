@@ -30,3 +30,13 @@ function mfc_content_filter($content)
     $content = "My fluffy cat says: " . $content;
     return $content;
 }
+
+add_filter('body_class', 'mfc_add_body_class');
+
+function mfc_add_body_class($body_classes)
+{
+    if (is_single()) {
+        $body_classes[] = 'my-fluffy-cat-class';
+    }
+    return $body_classes;
+}
