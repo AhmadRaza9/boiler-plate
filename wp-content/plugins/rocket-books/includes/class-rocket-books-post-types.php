@@ -108,7 +108,7 @@ class Rocket_Books_Post_Types
             'capabilities' => array(),
             'map_meta_cap' => null,
             'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
-            'register_meta_box_cb' => null,
+            'register_meta_box_cb' => array($this, 'register_metabox_book'),
             'taxonomies' => array('genre'),
             'has_archive' => true,
             'rewrite' => array(
@@ -218,6 +218,32 @@ class Rocket_Books_Post_Types
         require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
         return new Rocket_Books_Template_Loader();
 
+    }
+
+    /**
+     * Register metabox for CPT: Book
+     */
+
+    public function register_metabox_book($post)
+    {
+        add_meta_box(
+            'book-details',
+            __('Book Details', 'rocket-books'),
+            array($this, 'book_metabox_display_cb'),
+            'book',
+            'normal',
+            'default'
+        );
+
+    }
+
+    /**
+     * Display for Metabox for CPT: Book
+     */
+
+    public function book_metabox_display_cb($post)
+    {
+        echo "here, we shall display fields";
     }
 
 }
