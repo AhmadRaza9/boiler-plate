@@ -188,9 +188,7 @@ class Rocket_Books_Post_Types
         if (is_singular('book')) {
 
             // template for CPT book
-            require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
-
-            $template_loader = new Rocket_Books_Template_Loader();
+            $template_loader = $this->get_template_loader();
 
             return $template_loader->get_template_part('single', 'book', false);
 
@@ -206,11 +204,19 @@ class Rocket_Books_Post_Types
     {
         if (is_post_type_archive('book')) {
             // template for CPT book
-            require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
-            $template_loader = new Rocket_Books_Template_Loader();
+            $template_loader = $this->get_template_loader();
+
             return $template_loader->get_template_part('archive', 'book', false);
         }
         return $template;
+    }
+
+    public function get_template_loader()
+    {
+        require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
+        $template_loader = new Rocket_Books_Template_Loader();
+        return $template_loader;
+
     }
 
 }
