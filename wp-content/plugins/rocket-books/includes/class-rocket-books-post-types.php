@@ -178,4 +178,23 @@ class Rocket_Books_Post_Types
         return $the_content;
     }
 
+    /**
+     * Single Template for CPT: Book
+     */
+
+    public function single_template_book($template)
+    {
+        if (is_singular('book')) {
+
+            // template for CPT book
+            require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-boos-template-loader.php';
+
+            $template_loader = new Rocket_Books_Template_Loader();
+
+            return $template_loader->get_template_part('single', 'book', false);
+
+        }
+        return $template;
+    }
+
 }
