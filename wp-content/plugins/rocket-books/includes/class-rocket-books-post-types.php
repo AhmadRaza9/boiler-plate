@@ -198,4 +198,19 @@ class Rocket_Books_Post_Types
         return $template;
     }
 
+    /**
+     * Archive Template for CPT: Book
+     */
+
+    public function archive_template_book($template)
+    {
+        if (is_post_type_archive('book')) {
+            // template for CPT book
+            require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
+            $template_loader = new Rocket_Books_Template_Loader();
+            return $template_loader->get_template_part('archive', 'book', false);
+        }
+        return $template;
+    }
+
 }
