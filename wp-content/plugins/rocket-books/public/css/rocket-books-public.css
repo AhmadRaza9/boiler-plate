@@ -1,4 +1,67 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+/* Card Based Layout - Base styles */
+#cpt-main-sec {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.cpt-card {
+  background: #bbf6ff;
+  padding: 1em;
+}
+.cpt-card:hover {
+  background-color: #8af0ff;
+}
+.cpt-card a {
+  color: black;
+  text-decoration: none;
+  flex: 1;
+}
+
+.cpt-card a:hover {
+  text-decoration: none;
+}
+
+.cpt-card a:hover {
+  box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
+}
+
+.cpt-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cpt-card-content h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+.cpt-card-content p {
+  font-size: 95%;
+}
+
+/* Flexbox stuff */
+
+@media screen and (min-width: 20em) {
+  #cpt-main-sec {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  #cpt-main-sec {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 60em) {
+  #cpt-main-sec {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cpt-cards {
+    margin-top: inherit;
+    padding: 1em;
+  }
+}
