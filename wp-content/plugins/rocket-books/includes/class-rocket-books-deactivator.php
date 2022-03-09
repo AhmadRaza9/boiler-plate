@@ -20,17 +20,24 @@
  * @subpackage Rocket_Books/includes
  * @author     Ahmad <raza.ataki@gmail.com>
  */
-class Rocket_Books_Deactivator {
+class Rocket_Books_Deactivator
+{
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function deactivate() {
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    1.0.0
+     */
+    public static function deactivate()
+    {
 
-	}
+        // un register CPT
+        unregister_post_type('book');
+
+        // flush rewrite rule
+        flush_rewrite_rules();
+    }
 
 }
