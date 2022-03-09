@@ -187,7 +187,7 @@ class Rocket_Books_Post_Types
         if (is_singular('book')) {
 
             // template for CPT book
-            require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-boos-template-loader.php';
+            require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
 
             $template_loader = new Rocket_Books_Template_Loader();
 

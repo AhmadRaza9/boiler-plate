@@ -239,7 +239,7 @@ class Rocket_Books
 
     /**
      * Defining all action and filter hooks for registering custom post types
-     */
+     **/
 
     public function define_post_type_hooks()
     {
