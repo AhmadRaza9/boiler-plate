@@ -40,6 +40,12 @@ class Rocket_Books_Post_Types
     private $version;
 
     /**
+     * Temple loader class
+     */
+
+    private $template_loader;
+
+    /**
      * Initialize the class and set its properties.
      *
      * @since    1.0.0
@@ -51,7 +57,7 @@ class Rocket_Books_Post_Types
 
         $this->plugin_name = $plugin_name;
         $this->version = $version;
-
+        $this->template_loader = $this->get_template_loader();
     }
 
     /**
@@ -187,10 +193,7 @@ class Rocket_Books_Post_Types
     {
         if (is_singular('book')) {
 
-            // template for CPT book
-            $template_loader = $this->get_template_loader();
-
-            return $template_loader->get_template_part('single', 'book', false);
+            return $this->template_loader->get_template_part('single', 'book', false);
 
         }
         return $template;
@@ -202,11 +205,10 @@ class Rocket_Books_Post_Types
 
     public function archive_template_book($template)
     {
-        if (is_post_type_archive('book')) {
+        if (is_post_type_archive('book') || is_tax('genre')) {
             // template for CPT book
-            $template_loader = $this->get_template_loader();
 
-            return $template_loader->get_template_part('archive', 'book', false);
+            return $this->template_loader->get_template_part('archive', 'book', false);
         }
         return $template;
     }
@@ -214,8 +216,7 @@ class Rocket_Books_Post_Types
     public function get_template_loader()
     {
         require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
-        $template_loader = new Rocket_Books_Template_Loader();
-        return $template_loader;
+        return new Rocket_Books_Template_Loader();
 
     }
 
