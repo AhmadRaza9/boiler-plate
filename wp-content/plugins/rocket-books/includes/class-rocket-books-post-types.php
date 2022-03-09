@@ -157,6 +157,7 @@ class Rocket_Books_Post_Types
                 'hierarchical' => true,
             ),
             'capabilities' => array(),
+            'show_in_rest' => true,
         ));
     }
 
