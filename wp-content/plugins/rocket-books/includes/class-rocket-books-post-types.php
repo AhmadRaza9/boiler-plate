@@ -226,13 +226,17 @@ class Rocket_Books_Post_Types
 
     public function register_metabox_book($post)
     {
+        $is_gutenberg_active = (
+            function_exists('use_block_editor_for_post_type') &&
+            use_block_editor_for_post_type(get_post_type())
+        );
         add_meta_box(
             'book-details',
             __('Book Details', 'rocket-books'),
             array($this, 'book_metabox_display_cb'),
             'book',
-            'normal',
-            'high',
+            ($is_gutenberg_active) ? 'side' : 'normal',
+            'default',
         );
 
     }
