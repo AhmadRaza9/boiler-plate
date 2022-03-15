@@ -231,7 +231,7 @@ class Rocket_Books_Post_Types
             __('Book Details', 'rocket-books'),
             array($this, 'book_metabox_display_cb'),
             'book',
-            'side',
+            'normal',
             'high',
         );
 
@@ -243,7 +243,7 @@ class Rocket_Books_Post_Types
 
     public function book_metabox_display_cb($post)
     {
-        echo "Here!, we shall display fields";
+        echo "Here!, we shall display fields test";
     }
 
 }
