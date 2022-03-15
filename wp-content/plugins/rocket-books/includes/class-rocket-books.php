@@ -253,7 +253,10 @@ class Rocket_Books
 
         $this->loader->add_filter('archive_template', $plugin_post_types, 'archive_template_book');
 
-        /** These loads to all post types **/
+        /**
+         * These loads to all post types
+         **/
+
         // we use register post type method
         // $this->loader->add_action('add_meta_boxes_book', $plugin_post_types, 'register_metabox_book', 10, 1);
 
@@ -261,7 +264,15 @@ class Rocket_Books
 
         // $this->loader->add_action('do_meta_boxes', $plugin_post_types, 'register_metabox_book', 10, 1);
 
-        /** These loads to all post types **/
+        /**
+         * These loads to all post types
+         **/
+
+        /**
+         * Save Metabox for CPT: Book
+         **/
+
+        $this->loader->add_action('save_post_book', $plugin_post_types, 'metabox_save_book', 10, 3);
 
     }
 

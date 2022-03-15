@@ -247,7 +247,33 @@ class Rocket_Books_Post_Types
 
     public function book_metabox_display_cb($post)
     {
-        echo "Here!, we shall display fields test";
+        ?>
+<label for="rbr-book-pages">
+    <?php _e('Number of Pages:', 'rocket-books')?>
+</label>
+
+<input type="text" name="rbr-book-pages" class="widefat" value="<?php echo get_post_meta(get_the_ID(), 'rbr-book-pages', true); ?>">
+
+<?php
+
+        get_post_meta($post->ID);
+
+    }
+
+    /**
+     * Saving Custom fields for CPT: Book
+     **/
+
+    public function metabox_save_book($post_id, $post, $update)
+    {
+        // var_export($_POST['rbr-book-pages']);die();
+        // update_post_meta(get_the_ID(), 'rbr-book-pages', $_POST['rbr-book-pages']);
+
+        update_post_meta(
+            $post_id,
+            'rbr-book-pages',
+            $_POST['rbr-book-pages']
+        );
     }
 
 }
