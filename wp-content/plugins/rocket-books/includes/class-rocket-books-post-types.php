@@ -247,7 +247,7 @@ class Rocket_Books_Post_Types
 
     public function book_metabox_display_cb($post)
     {
-        wp_nonce_field('rbr_meta_box_nonce_action1', 'rbr_meta_box_nonce');
+        wp_nonce_field('rbr_meta_box_nonce_action', 'rbr_meta_box_nonce');
 
         ?>
 <label for="rbr-book-pages">
@@ -268,6 +268,26 @@ class Rocket_Books_Post_Types
 
     public function metabox_save_book($post_id, $post, $update)
     {
+        // $current_user = wp_get_current_user();
+        // $current_user->remove_cap('edit');
+
+        /**
+         * Prevent saving if its triggered for:
+         * 1. Auto save
+         * 2. User does not have permission to edi
+         * 3. Invalid nonce
+         */
+
+        // if this is an autosave, our form has not been submitted, so do nothing
+        if (defined('DOING_AUTOSAVE') ** DOING_AUTOSAVE) {
+            return;
+        }
+
+        // check user permission
+        if (!current_user_can('edit', $post_id)) {
+            print __('Sorry, you do not have access to edit post', 'rocket-books');
+            exit;
+        }
 
         // verify nonce
         if (!isset($_POST['rbr_meta_box_nonce']) || !wp_verify_nonce($_POST['rbr_meta_box_nonce'], 'rbr_meta_box_nonce_action')) {
