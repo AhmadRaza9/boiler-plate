@@ -113,17 +113,33 @@ class Rocket_Books_Admin
 
         // Top Level Menu
 
-        add_menu_page(
+        // add_menu_page(
+        //     'Rocket Books Settings', // page_title
+        //     'Rocket Books', // menu_title
+        //     'manage_options', // capability
+        //     'rocket-books', // menu_slug
+        //     array($this, 'admin_page_display'), // function
+        //     'dashicons-book-alt', // icon_url
+        //     60, // position
+        // );
+
+        // Sub Menu
+        // add_plugins_page(
+        //     'Rocket Books Settings', // page_title
+        //     'Rocket Books', // menu_title
+        //     'manage_options', // capability
+        //     'rocket-books', // menu_slug
+        //     array($this, 'admin_page_display'), // function
+        // );
+
+        add_submenu_page(
+            'edit.php?post_type=book', // parent_slug
             'Rocket Books Settings', // page_title
             'Rocket Books', // menu_title
             'manage_options', // capability
             'rocket-books', // menu_slug
             array($this, 'admin_page_display'), // function
-            'dashicons-book-alt', // icon_url
-            60, // position
         );
-
-        // Sub Menu
 
     }
 
