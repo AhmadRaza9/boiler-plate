@@ -149,8 +149,8 @@ class Rocket_Books_Admin
 
     public function admin_page_display()
     {
-        // echo "I am page content";
-        include "partials/rocket-books-admin-display.php";
+        // Old method of saving options
+        include "partials/rocket-books-admin-display-form-method.php";
 
     }
 }
