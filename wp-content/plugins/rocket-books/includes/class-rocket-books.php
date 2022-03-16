@@ -131,6 +131,11 @@ class Rocket_Books
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-rocket-books-public.php';
 
         /**
+         * requiring CMB2 init file for meta boxes
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'vendor/CMB2/init.php';
+
+        /**
          * The class responsible for defining all actions for registering custom post types
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-rocket-books-post-types.php';
@@ -272,7 +277,9 @@ class Rocket_Books
          * Save Metabox for CPT: Book
          **/
 
-        $this->loader->add_action('save_post_book', $plugin_post_types, 'metabox_save_book', 10, 3);
+        // $this->loader->add_action('save_post_book', $plugin_post_types, 'metabox_save_book', 10, 3); // un-commend to run meta box fields
+
+        $this->loader->add_action('cmb2_admin_init', $plugin_post_types, 'register_cmb2_metabox_book');
 
     }
 
