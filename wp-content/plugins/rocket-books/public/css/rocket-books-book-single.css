@@ -30,13 +30,14 @@ h1.book-entry-title {
   font-size: 1.5em;
   margin: 1em 0 0.5em;
   text-align: center;
+  color: white;
 }
 
 ul.book-meta-fields {
   margin: 1em 0 0.5em !important;
   padding: 0 !important;
-  list-style: none;
-  /* display: flex;
+  list-style: none !important;
+  /* display: flex; 
   justify-content: flex-start; */
 }
 

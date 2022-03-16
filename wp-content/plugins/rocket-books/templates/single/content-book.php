@@ -12,14 +12,8 @@
         <div class="book-entry-img">
             <?php the_post_thumbnail('medium_large');?>
         </div>
-        <ul class="book-meta-fields">
-            <!-- Here we will display our custom meta -->
-
-            <li>Pages: <?php echo esc_html(get_post_meta(get_the_ID(), 'rbr_book_pages', true)); ?></li>
-            <!-- <li>IS Featured Book: <#?php echo esc_html(get_post_meta(get_the_ID(), 'rbr-is-featured', true)); ?></li> -->
-            <li>Book Format: <?php echo esc_html(get_post_meta(get_the_ID(), 'rbr_book_format', true)); ?></li>
-
-        </ul>
+<?php include ROCKET_BOOKS_BASE_DIR . "templates/book-meta.php";
+?>
     </div>
 	<div class="book-entry-content">
 		<?php the_content();?>

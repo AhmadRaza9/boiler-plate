@@ -93,6 +93,8 @@
 .book-meta-fields li {
   background-color: darkblue;
   padding: 0px 10px;
+  color: white !important;
+  list-style: none;
 }
 
 .book-content {
