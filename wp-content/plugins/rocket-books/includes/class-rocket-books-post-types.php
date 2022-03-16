@@ -258,7 +258,7 @@ class Rocket_Books_Post_Types
 
 <?php
 
-        // var_export(get_post_meta($post->ID));
+        var_export(get_post_meta($post->ID));
 
     }
 
@@ -277,28 +277,28 @@ class Rocket_Books_Post_Types
          */
 
         // if this is an autosave, our form has not been submitted, so do nothing
-        // if (defined('DOING_AUTOSAVE') ** DOING_AUTOSAVE) {
-        //     return;
-        // }
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return;
+        }
 
         // check user permission
-        // if (!current_user_can('edit', $post_id)) {
-        //     print __('Sorry, you do not have access to edit post', 'rocket-books');
-        //     exit;
-        // }
+        if (!current_user_can('edit_posts', $post_id)) {
+            print __('Sorry, you do not have access to edit post', 'rocket-books');
+            exit;
+        }
 
         // verify nonce
         if (!isset($_POST['rbr_meta_box_nonce']) || !wp_verify_nonce($_POST['rbr_meta_box_nonce'], 'rbr_meta_box_nonce_action')) {
             return null;
         }
 
-        // update_post_meta(
-        //     $post_id,
-        //     'rbr_book_pages',
-        //     $_POST['rbr-book-pages']
-        // );
+        update_post_meta(
+            $post_id,
+            'rbr_book_pages',
+            sanitize_text_field($_POST['rbr-book-pages'])
+        );
 
-        update_post_meta(get_the_ID(), 'rbr_book_pages', $_POST['rbr-book-pages']);
+        // update_post_meta(get_the_ID(), 'rbr_book_pages', $_POST['rbr-book-pages']);
     }
 
 }
