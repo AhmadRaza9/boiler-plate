@@ -255,10 +255,16 @@ class Rocket_Books_Post_Types
 </label>
 
 <input type="text" name="rbr-book-pages" class="widefat" value="<?php echo get_post_meta(get_the_ID(), 'rbr_book_pages', true); ?>">
+<label for="rbr-is-featured">
+    <?php _e('is Featured Book? ', 'rocket-books');?>
+</label>
+<input type="checkbox" name="rbr-is-featured"
+value="yes"
+<?php checked(get_post_meta(get_the_ID(), 'rbr_is_featured', true), 'yes');?>>
 
 <?php
 
-        var_export(get_post_meta($post->ID));
+        // var_export(get_post_meta($post->ID));
 
     }
 
@@ -295,7 +301,14 @@ class Rocket_Books_Post_Types
         update_post_meta(
             $post_id,
             'rbr_book_pages',
-            sanitize_text_field($_POST['rbr-book-pages'])
+            absint($_POST['rbr-book-pages'])
+        );
+
+        // Validation : we know what are expecting to receive
+        update_post_meta(
+            $post_id,
+            'rbr_is_featured',
+            ('yes' === $_POST['rbr-is-featured']) ? 'yes' : 'no' // yes / no
         );
 
         // update_post_meta(get_the_ID(), 'rbr_book_pages', $_POST['rbr-book-pages']);
