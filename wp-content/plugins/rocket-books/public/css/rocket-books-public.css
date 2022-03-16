@@ -65,3 +65,36 @@
     padding: 1em;
   }
 }
+
+/* Single Book Layout using Flexbox */
+
+/** Debug CSS start here */
+
+.single-book-container {
+  background-color: darkcyan;
+  color: white;
+}
+
+.book-meta-container,
+.book-entry-content {
+  background-color: darkcyan;
+}
+
+.book-entry-title {
+  background-color: #000dffc2;
+  color: white;
+  padding-left: 10px;
+}
+
+.book-meta-fields {
+  background: beige;
+}
+
+.book-meta-fields li {
+  background-color: darkblue;
+  padding: 0px 10px;
+}
+
+.book-content {
+  background-color: transparent !important;
+}
