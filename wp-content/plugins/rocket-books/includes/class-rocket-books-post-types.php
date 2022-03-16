@@ -247,18 +247,15 @@ class Rocket_Books_Post_Types
 
     public function book_metabox_display_cb($post)
     {
-        wp_nonce_field('rbr_meta_box_nonce_action', 'rbr_meta_box_nonce');
 
         ?>
 <label for="rbr-book-pages">
-    <?php _e('Number of Pages:', 'rocket-books')?>
+    <?php _e('Number of Pages:', 'rocket-books');?>
 </label>
 
-<input type="text" name="rbr-book-pages" class="widefat" value="<?php echo get_post_meta(get_the_ID(), 'rbr-book-pages', true); ?>">
+<input type="text" name="rbr-book-pages" class="widefat" value="<?php echo get_post_meta(get_the_ID(), 'rbr_book_pages', true); ?>">
 
 <?php
-
-        get_post_meta($post->ID);
 
     }
 
@@ -268,8 +265,6 @@ class Rocket_Books_Post_Types
 
     public function metabox_save_book($post_id, $post, $update)
     {
-        // $current_user = wp_get_current_user();
-        // $current_user->remove_cap('edit');
 
         /**
          * Prevent saving if its triggered for:
@@ -279,30 +274,28 @@ class Rocket_Books_Post_Types
          */
 
         // if this is an autosave, our form has not been submitted, so do nothing
-        if (defined('DOING_AUTOSAVE') ** DOING_AUTOSAVE) {
-            return;
-        }
+        // if (defined('DOING_AUTOSAVE') ** DOING_AUTOSAVE) {
+        //     return;
+        // }
 
         // check user permission
-        if (!current_user_can('edit', $post_id)) {
-            print __('Sorry, you do not have access to edit post', 'rocket-books');
-            exit;
-        }
+        // if (!current_user_can('edit', $post_id)) {
+        //     print __('Sorry, you do not have access to edit post', 'rocket-books');
+        //     exit;
+        // }
 
         // verify nonce
-        if (!isset($_POST['rbr_meta_box_nonce']) || !wp_verify_nonce($_POST['rbr_meta_box_nonce'], 'rbr_meta_box_nonce_action')) {
-            print __('Sorry, your nonce did not verify', 'rocket-books');
-            exit;
-        }
+        // if (!isset($_POST['rbr_meta_box_nonce']) || !wp_verify_nonce($_POST['rbr_meta_box_nonce'], 'rbr_meta_box_nonce_action')) {
+        //     return null;
+        // }
 
-        // var_export($_POST['rbr-book-pages']);die();
-        // update_post_meta(get_the_ID(), 'rbr-book-pages', $_POST['rbr-book-pages']);
+        // update_post_meta(
+        //     $post_id,
+        //     'rbr_book_pages',
+        //     $_POST['rbr-book-pages']
+        // );
 
-        update_post_meta(
-            $post_id,
-            'rbr-book-pages',
-            $_POST['rbr-book-pages']
-        );
+        update_post_meta(get_the_ID(), 'rbr_book_pages', $_POST['rbr-book-pages']);
     }
 
 }
