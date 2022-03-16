@@ -247,6 +247,7 @@ class Rocket_Books_Post_Types
 
     public function book_metabox_display_cb($post)
     {
+        wp_nonce_field('rbr_meta_box_nonce_action', 'rbr_meta_box_nonce');
 
         ?>
 <label for="rbr-book-pages">
@@ -256,6 +257,8 @@ class Rocket_Books_Post_Types
 <input type="text" name="rbr-book-pages" class="widefat" value="<?php echo get_post_meta(get_the_ID(), 'rbr_book_pages', true); ?>">
 
 <?php
+
+        // var_export(get_post_meta($post->ID));
 
     }
 
@@ -285,9 +288,9 @@ class Rocket_Books_Post_Types
         // }
 
         // verify nonce
-        // if (!isset($_POST['rbr_meta_box_nonce']) || !wp_verify_nonce($_POST['rbr_meta_box_nonce'], 'rbr_meta_box_nonce_action')) {
-        //     return null;
-        // }
+        if (!isset($_POST['rbr_meta_box_nonce']) || !wp_verify_nonce($_POST['rbr_meta_box_nonce'], 'rbr_meta_box_nonce_action')) {
+            return null;
+        }
 
         // update_post_meta(
         //     $post_id,
