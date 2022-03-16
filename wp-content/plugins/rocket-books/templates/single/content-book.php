@@ -6,9 +6,7 @@
 
 <article id="post-<?php the_ID();?>" <?php post_class('single-book-container');?>>
     <div class="book-meta-container">
-        <div class="book-entry-title">
-            <h1> <?php the_title();?> </h1>
-        </div>
+
         <div class="book-entry-img">
             <?php the_post_thumbnail('medium_large');?>
         </div>
@@ -16,6 +14,9 @@
 ?>
     </div>
 	<div class="book-entry-content">
+                <!-- <div class="book-entry-title"> -->
+            <?php the_title('<h1 class="entry-title">', '</h1>', true);?>
+        <!-- </div> -->
 		<?php the_content();?>
 	</div><!-- .entry-content -->
 
