@@ -9,6 +9,7 @@
 <?php
 // Security
 settings_fields('rbr-settings-page-options-group');
+
 // display section
 do_settings_sections('rbr-settings-page');
 
