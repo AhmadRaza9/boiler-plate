@@ -203,27 +203,37 @@ class Rocket_Books_Admin
         add_settings_field(
             'rbr_test_field', // id
             'Test Field', // title
-            function () {echo "<input type='text' name='rbr_test_field' value='" . esc_html(get_option('rbr_test_field')) . "'>";}, // cb-fun
+            array($this, 'markup_text_fields_cb'), // args array()
             'rbr-settings-page', // page
-            'rbr-general-section' // section
-            // '' // args array()
+            'rbr-general-section', // section
+            array(
+                'name' => 'rbr_test_field',
+                'value' => get_option('rbr_test_field'),
+            )
         );
 
         add_settings_field(
             'rbr_advanced_field1', // id
             'Advance Field 1', // title
-            function () {echo "<input type='text' name='rbr_advanced_field1' value='" . esc_html(get_option('rbr_advanced_field1')) . "'>";}, // cb-fun
+            array($this, 'markup_text_fields_cb'), // cb-fun
             'rbr-settings-page', // page
-            'rbr-advanced-section' // section
-            // '' // args array()
+            'rbr-advanced-section', // section
+            array(
+                'name' => 'rbr_advanced_field1',
+                'value' => get_option('rbr_advanced_field1'),
+            ) // args array()
         );
+
         add_settings_field(
             'rbr_advanced_field2', // id
             'Advance Field 2', // title
-            function () {echo "<input type='text' name='rbr_advanced_field2' value='" . esc_html(get_option('rbr_advanced_field2')) . "'>";}, // cb-fun
+            array($this, 'markup_text_fields_cb'), // cb-fun
             'rbr-settings-page', // page
-            'rbr-advanced-section' // section
-            // '' // args array()
+            'rbr-advanced-section', // section
+            array(
+                'name' => 'rbr_advanced_field2',
+                'value' => get_option('rbr_advanced_field2'),
+            ) // args array()
         );
 
     }
@@ -248,6 +258,27 @@ class Rocket_Books_Admin
             'rbr_advanced_field2', // option_name required
             array('sanitize_callback' => 'sanitize_text_field')
         );
+
+    }
+
+    /**
+     * Markup for Text fields
+     */
+
+    public function markup_text_fields_cb($args)
+    {
+        if (!is_array($args)) {
+            return null;
+        }
+
+        $name = (isset($args['name'])) ? esc_html($args['name']) : '';
+        $value = (isset($args['value'])) ? esc_html($args['value']) : '';
+
+        ?>
+
+    <input type="text" name="<?php echo $name; ?>" value="<?php echo $value; ?>" class="field-<?php echo $name; ?>">
+
+        <?php
 
     }
 
