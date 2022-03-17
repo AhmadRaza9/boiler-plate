@@ -165,6 +165,7 @@ class Rocket_Books_Admin
         $this->add_settings_section();
 
         // 2.) Add Settings Fields
+        $this->add_settings_fields();
 
         // 3.) Save Settings
     }
@@ -176,10 +177,26 @@ class Rocket_Books_Admin
     public function add_settings_section()
     {
         add_settings_section(
-            'rbr-general-section',
-            'General Settings',
-            function () {echo "These are general settings for rocket books";},
-            'rbr-settings-page');
+            'rbr-general-section', // id
+            'General Settings', // title
+            function () {echo "<p>These are general settings for rocket books</p>";}, // cb-fun
+            'rbr-settings-page' // page
+        );
+    }
+
+    /**
+     * Add Settings fields for setting section
+     */
+    public function add_settings_fields()
+    {
+        add_settings_field(
+            'rbr_test_field', // id
+            'Test Field', // title
+            function () {echo "<input type='text'>";}, // cb-fun
+            'rbr-settings-page', // page
+            'rbr-general-section' // section
+            // '' // args array()
+        );
     }
 
 }
