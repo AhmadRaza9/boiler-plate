@@ -177,12 +177,22 @@ class Rocket_Books_Admin
 
     public function add_settings_section()
     {
+        // General Section
         add_settings_section(
             'rbr-general-section', // id
             'General Settings', // title
             function () {echo "<p>These are general settings for rocket books</p>";}, // cb-fun
             'rbr-settings-page' // page
         );
+
+        // Advanced Section
+        add_settings_section(
+            'rbr-advanced-section', // id
+            'Advanced Settings', // title
+            function () {echo "<p>These are advanced settings for rocket books</p>";}, // cb-fun
+            'rbr-settings-page' // page
+        );
+
     }
 
     /**
@@ -198,6 +208,24 @@ class Rocket_Books_Admin
             'rbr-general-section' // section
             // '' // args array()
         );
+
+        add_settings_field(
+            'rbr_advanced_field1', // id
+            'Advance Field 1', // title
+            function () {echo "<input type='text' name='rbr_advanced_field1' value='" . esc_html(get_option('rbr_advanced_field1')) . "'>";}, // cb-fun
+            'rbr-settings-page', // page
+            'rbr-advanced-section' // section
+            // '' // args array()
+        );
+        add_settings_field(
+            'rbr_advanced_field2', // id
+            'Advance Field 2', // title
+            function () {echo "<input type='text' name='rbr_advanced_field2' value='" . esc_html(get_option('rbr_advanced_field2')) . "'>";}, // cb-fun
+            'rbr-settings-page', // page
+            'rbr-advanced-section' // section
+            // '' // args array()
+        );
+
     }
 
     /**
@@ -208,7 +236,19 @@ class Rocket_Books_Admin
         register_setting(
             'rbr-settings-page-options-group', // option_group required
             'rbr_test_field', // option_name required
-            '');
+            array('sanitize_callback' => 'sanitize_text_field')
+        );
+        register_setting(
+            'rbr-settings-page-options-group', // option_group required
+            'rbr_advanced_field1', // option_name required
+            array('sanitize_callback' => 'sanitize_text_field')
+        );
+        register_setting(
+            'rbr-settings-page-options-group', // option_group required
+            'rbr_advanced_field2', // option_name required
+            array('sanitize_callback' => 'sanitize_text_field')
+        );
+
     }
 
 }
