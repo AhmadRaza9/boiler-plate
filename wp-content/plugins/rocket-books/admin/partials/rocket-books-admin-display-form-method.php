@@ -12,9 +12,13 @@
  * @subpackage Rocket_Books/admin/partials
  */
 
+if (!defined('ABSPATH')) {
+    die();
+}
+
 if (isset($_POST) && !empty($_POST)) {
     // add_option('rbr_test_field', $_POST['rbr-test-field']);
-    update_option('rbr_test_field', $_POST['rbr-test-field']);
+    update_option('rbr_test_field', sanitize_text_field($_POST['rbr-test-field']));
 }
 
 ?>
