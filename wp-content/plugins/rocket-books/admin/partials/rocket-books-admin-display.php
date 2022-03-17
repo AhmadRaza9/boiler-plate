@@ -14,7 +14,6 @@ settings_fields('rbr-settings-page-options-group');
 do_settings_sections('rbr-settings-page');
 
 ?>
-
         <?php submit_button('Submit');?>
     </form>
 </div>

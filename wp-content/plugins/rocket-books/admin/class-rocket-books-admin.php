@@ -162,11 +162,12 @@ class Rocket_Books_Admin
 
     public function admin_init()
     {
-        // 1) Add Settings Section
+        // 1.) Add Settings Section
         $this->add_settings_section();
 
-        // 2) Add Settings Fields
-        // 3) Save Settings
+        // 2.) Add Settings Fields
+
+        // 3.) Save Settings
     }
 
     /**
