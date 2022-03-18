@@ -1,8 +1,6 @@
 /* Card Based Layout - Base styles */
 #cpt-main-sec {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
 }
 
 .cpt-card {
@@ -42,23 +40,25 @@
   font-size: 95%;
 }
 
-/* Flexbox stuff */
-
-@media screen and (min-width: 20em) {
-  #cpt-main-sec {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (min-width: 40em) {
-  #cpt-main-sec {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media screen and (min-width: 60em) {
-  #cpt-main-sec {
+  .column-two {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+
+  .column-three {
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  .column-four {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+
+  .column-five {
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
   }
   .cpt-cards {
     margin-top: inherit;

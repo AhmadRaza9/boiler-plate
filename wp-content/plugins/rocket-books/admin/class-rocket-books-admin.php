@@ -224,7 +224,7 @@ class Rocket_Books_Admin
                 'options' => array(
                     'column-two' => __('Two Columns', 'rocket-books'),
                     'column-three' => __('Three Columns', 'rocket-books'),
-                    'column-foue' => __('Four Columns', 'rocket-books'),
+                    'column-four' => __('Four Columns', 'rocket-books'),
                     'column-five' => __('Five Columns', 'rocket-books'),
                 ),
             )

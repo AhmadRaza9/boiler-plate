@@ -16,7 +16,11 @@
  * @since Twenty Sixteen 1.0
  */
 
-get_header();?>
+$archive_columns = get_option('rbr_archive_column');
+
+get_header();
+
+?>
 
 
 
@@ -28,7 +32,7 @@ the_archive_title('<h1 class="page-title">', '</h1>');
 the_archive_description('<div class="taxonomy-description">', '</div>');
 ?>
 			</header><!-- .page-header -->
-            <div class="cpt-cards column-three" id="cpt-main-sec">
+            <div class="cpt-cards <?php echo sanitize_html_class($archive_columns); ?>" id="cpt-main-sec">
             <?php
 // Start the loop.
 while (have_posts()):
