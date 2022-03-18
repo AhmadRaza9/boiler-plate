@@ -426,6 +426,7 @@ foreach ($options as $option_key => $option_label):
         require_once ROCKET_BOOKS_BASE_DIR . 'vendor/boo-settings-helper/class-boo-settings-helper.php';
 
         $rocket_books_settings = array(
+            'prefix' => 'rbr_',
             'menu' => array(
 
                 'slug' => 'rocket-books',
@@ -447,6 +448,38 @@ foreach ($options as $option_key => $option_label):
                     'id' => 'rbr_advance_section',
                     'title' => __('Advance Section', 'rocket-books'),
                     'desc' => __('These are advnace settings', 'rocket-books'),
+                ),
+            ),
+            'fields' => array(
+                // fields for General Section
+                'rbr_general_section' => array(
+                    array(
+                        'id' => 'test_field',
+                        'label' => __('Test Field', 'rocket-books'),
+                    ),
+                    array(
+                        'id' => 'archive_column',
+                        'label' => __('Archive Column', 'rocket-books'),
+                        'type' => 'select',
+                        'options' => array(
+                            'column-two' => __('Two Columns', 'rocket-books'),
+                            'column-three' => __('Three Columns', 'rocket-books'),
+                            'column-four' => __('Four Columns', 'rocket-books'),
+                            'column-five' => __('Five Columns', 'rocket-books'),
+                        ),
+                    ),
+                ),
+
+                // fields for Advance Section
+                'rbr_advance_section' => array(
+                    array(
+                        'id' => 'advanced_field1',
+                        'label' => __('Test Field 3', 'rocket-books'),
+                    ),
+                    array(
+                        'id' => 'advanced_field2',
+                        'label' => __('Test Field 4', 'rocket-books'),
+                    ),
                 ),
             ),
         );
