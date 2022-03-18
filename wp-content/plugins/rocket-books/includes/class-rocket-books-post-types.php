@@ -364,6 +364,12 @@ class Rocket_Books_Post_Types
             'context' => 'side',
         ));
         $metabox->add_field(array(
+            'id' => 'rbr_is_featured',
+            'name' => __('Is Featured Book', 'rocket-books'),
+            'type' => 'checkbox',
+        ));
+
+        $metabox->add_field(array(
             'id' => 'rbr_book_pages',
             'name' => __('Number of Pages', 'rocket-books'),
             'type' => 'text',

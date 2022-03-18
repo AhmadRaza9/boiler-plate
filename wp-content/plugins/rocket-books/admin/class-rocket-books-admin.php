@@ -213,6 +213,18 @@ class Rocket_Books_Admin
         );
 
         add_settings_field(
+            'rbr_checkbox_field', // id
+            'CheckBox', // title
+            array($this, 'markup_check_box_cb'), // args array()
+            'rbr-settings-page', // page
+            'rbr-general-section', // section
+            array(
+                'name' => 'rbr_checkbox_field',
+                'value' => get_option('rbr_checkbox_field'),
+            )
+        );
+
+        add_settings_field(
             'rbr_archive_column', // id
             'Archive Column', // title
             array($this, 'markup_select_fields_cb'), // args array()
@@ -281,6 +293,11 @@ class Rocket_Books_Admin
             'rbr_archive_column' // option_name required
         );
 
+        register_setting(
+            'rbr-settings-page-options-group', // option_group required
+            'rbr_checkbox_field' // option_name required
+        );
+
     }
 
     /**
@@ -327,6 +344,28 @@ foreach ($options as $option_key => $option_label):
         endforeach;
         ?>
         </select>
+        <small>Default Layout is Three column.</small>
+
+        <?php
+
+    }
+
+    /**
+     * Markup for check box
+     */
+
+    public function markup_check_box_cb($args)
+    {
+        if (!is_array($args)) {
+            return null;
+        }
+
+        $name = (isset($args['name'])) ? esc_html($args['name']) : '';
+        // $value = (isset($args['value'])) ? esc_html($args['value']) : '';
+
+        ?>
+
+    <input type="checkbox" name="<?php echo $name; ?>" value="yes" class="field-<?php echo $name; ?>" <?php checked(get_option('rbr_checkbox_field'), 'yes');?>>
 
         <?php
 
