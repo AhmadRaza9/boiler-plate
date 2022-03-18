@@ -416,4 +416,43 @@ foreach ($options as $option_key => $option_label):
         return array_merge($links, $mylinks);
     }
 
+    /**
+     * To add Plugin Menu and Settings Page
+     */
+
+    public function plugin_menu_settings_using_helper()
+    {
+
+        require_once ROCKET_BOOKS_BASE_DIR . 'vendor/boo-settings-helper/class-boo-settings-helper.php';
+
+        $rocket_books_settings = array(
+            'menu' => array(
+
+                'slug' => 'rocket-books',
+                'page_title' => __('Rocket Books Settings', 'rocket-books'),
+                'menu_title' => __('Rocket Books', 'rocket-books'),
+                'parent' => 'edit.php?post_type=book',
+                'submenu' => true,
+            ),
+            'sections' => array(
+                // General Seciton
+                array(
+                    'id' => 'rbr_general_section',
+                    'title' => __('General Section', 'rocket-books'),
+                    'desc' => __('These are general settings', 'rocket-books'),
+                ),
+
+                // Advance Seciton
+                array(
+                    'id' => 'rbr_advance_section',
+                    'title' => __('Advance Section', 'rocket-books'),
+                    'desc' => __('These are advnace settings', 'rocket-books'),
+                ),
+            ),
+        );
+
+        new Boo_Settings_Helper($rocket_books_settings);
+
+    }
+
 }
