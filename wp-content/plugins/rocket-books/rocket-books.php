@@ -40,6 +40,11 @@ define('ROCKET_BOOKS_VERSION', '1.0.0');
 define('ROCKET_BOOKS_NAME', 'rocket_books');
 
 /**
+ * plugin base file
+ */
+define('ROCKET_BOOKS_BASE_FILE', __FILE__);
+
+/**
  * Plugin Directly Path.
  * Plugin base dir path.
  * user to locate plugin resources primarily code files

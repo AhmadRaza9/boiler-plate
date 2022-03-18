@@ -182,6 +182,9 @@ class Rocket_Books
         // HOoks for admin_init
         $this->loader->add_action('admin_init', $plugin_admin, 'admin_init');
 
+        // HOoks for Adding Action Links
+        $this->loader->add_action('plugin_action_links_' . plugin_basename(ROCKET_BOOKS_BASE_FILE), $plugin_admin, 'add_plugin_action_links');
+
     }
 
     /**

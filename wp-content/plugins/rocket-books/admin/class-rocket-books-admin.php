@@ -403,4 +403,17 @@ foreach ($options as $option_key => $option_label):
     <textarea name="<?php echo $name; ?>" id="textarea-<?php echo $name; ?>" cols="50" rows="5"><?php echo $value; ?></textarea>
         <?php
 }
+
+    /**
+     * Add plugin action links
+     */
+
+    public function add_plugin_action_links($links)
+    {
+        $mylinks = array(
+            "<a href='" . admin_url('edit.php?post_type=book&page=rocket-books') . "'>Settings</a>",
+        );
+        return array_merge($links, $mylinks);
+    }
+
 }
