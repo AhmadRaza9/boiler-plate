@@ -426,6 +426,7 @@ foreach ($options as $option_key => $option_label):
         require_once ROCKET_BOOKS_BASE_DIR . 'vendor/boo-settings-helper/class-boo-settings-helper.php';
 
         $rocket_books_settings = array(
+            'tabs' => true,
             'prefix' => 'rbr_',
             'menu' => array(
 
@@ -539,10 +540,36 @@ foreach ($options as $option_key => $option_label):
 
                     ),
                     array(
+                        'id' => 'pages_field_id',
+                        'label' => __('Pages Field Type', 'rocket-books'),
+                        'desc' => __('List of Pages', 'rocket-books'),
+                        'type' => 'pages',
+                        'options' => array(
+                            'post_type' => 'post',
+                        ),
+                    ),
+                    array(
+                        'id' => 'posts_field_id',
+                        'label' => __('Posts Field Type', 'rocket-books'),
+//                        'desc'    => __( 'List of Posts', 'plugin-name' ),
+                        'type' => 'posts',
+                        'options' => array(
+                            'post_type' => 'post',
+                        ),
+                    ),
+                    array(
+                        'id' => 'file_field_id',
+                        'label' => __('File', 'rocket-books'),
+                        'desc' => __('File description', 'rocket-books'),
+                        'type' => 'file',
+                        'default' => '',
+                        'placeholder' => __('Textarea placeholder', 'rocket-books'),
+                        'options' => array( //                    'btn' => 'Get it'
+                        ),
+                    ),
+                    array(
                         'id' => 'media_field_id',
                         'label' => __('Media', 'rocket-books'),
-                        'desc' => __('Media', 'rocket-books'),
-                        'default' => '136',
                         'type' => 'media',
                         'options' => array(
                             'btn' => __('Get the image', 'rocket-books'),
@@ -559,6 +586,11 @@ foreach ($options as $option_key => $option_label):
                         'label' => __('Advanced', 'rocket-books'),
                     ),
                 ),
+            ),
+
+            'links' => array(
+                'plugin_basename' => plugin_basename(ROCKET_BOOKS_BASE_FILE),
+                'action_links' => true,
             ),
         );
 
