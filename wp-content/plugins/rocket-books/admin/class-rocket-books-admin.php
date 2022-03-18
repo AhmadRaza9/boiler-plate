@@ -468,17 +468,95 @@ foreach ($options as $option_key => $option_label):
                             'column-five' => __('Five Columns', 'rocket-books'),
                         ),
                     ),
+                    array(
+                        'id' => 'abs_int',
+                        'label' => __('Abs Int', 'rocket-books'),
+                        'type' => 'text',
+                        'placeholder' => 'admin',
+                    ),
+                    array(
+                        'id' => 'tested_field1',
+                        'label' => __('Test Field 1', 'rocket-books'),
+                        'type' => 'color',
+                    ),
+                    array(
+                        'id' => 'number_input',
+                        'label' => __('Number Input', 'rocket-books'),
+                        'type' => 'number',
+                        'placeholder' => '1.99',
+                    ),
+                    array(
+                        'id' => 'textarea_input',
+                        'label' => __('Textarea Input', 'rocket-books'),
+                        'type' => 'textarea',
+                        'placeholder' => 'Textarea placeholder',
+                    ),
+                    array(
+                        'id' => 'checkbox_input',
+                        'label' => __('CheckBox', 'rocket-books'),
+                        'type' => 'checkbox',
+                    ),
+                    array(
+                        'id' => 'multicheck_button_input',
+                        'label' => __('Radio Button', 'rocket-books'),
+                        'type' => 'multicheck',
+                        'options' => array(
+                            'multi_1' => 'Multi 1',
+                            'multi_2' => 'Multi 2',
+                            'multi_3' => 'Multi 3',
+                        ),
+                        'default' => array(
+                            'multi_1' => 'multi_1',
+                            'multi_3' => 'multi_3',
+                        ),
+                    ),
+                    array(
+                        'id' => 'radio_button_input',
+                        'label' => __('Radio Button', 'rocket-books'),
+                        'type' => 'radio',
+                        'options' => array(
+                            'Radio 1' => 'Radio 1',
+                            'Radio 2' => 'Radio 2',
+                            'Radio 3' => 'Radio 3',
+                        ),
+                        'desc' => 'A radio Button',
+                    ),
+                    array(
+                        'id' => 'drop_down',
+                        'label' => __('A Dropdown', 'rocket-books'),
+                        'type' => 'select',
+                        'options' => array(
+                            'option 1' => __('option 1', 'rocket-books'),
+                            'option 2' => __('option 2', 'rocket-books'),
+                            'option 3' => __('option 3', 'rocket-books'),
+                            'option 4' => __('option 4', 'rocket-books'),
+                        ),
+                    ),
+                    array(
+                        'id' => 'password',
+                        'label' => __('Password', 'rocket-books'),
+                        'type' => 'password',
+
+                    ),
+                    array(
+                        'id' => 'media_field_id',
+                        'label' => __('Media', 'rocket-books'),
+                        'desc' => __('Media', 'rocket-books'),
+                        'default' => '136',
+                        'type' => 'media',
+                        'options' => array(
+                            'btn' => __('Get the image', 'rocket-books'),
+                            'width' => 150,
+                            'max_width' => 150,
+                        ),
+                    ),
                 ),
 
                 // fields for Advance Section
                 'rbr_advance_section' => array(
                     array(
-                        'id' => 'advanced_field1',
-                        'label' => __('Test Field 3', 'rocket-books'),
-                    ),
-                    array(
-                        'id' => 'advanced_field2',
-                        'label' => __('Test Field 4', 'rocket-books'),
+                        'id' => 'advance',
+                        'label' => __('Advanced', 'rocket-books'),
                     ),
                 ),
             ),
