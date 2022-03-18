@@ -213,6 +213,24 @@ class Rocket_Books_Admin
         );
 
         add_settings_field(
+            'rbr_archive_column', // id
+            'Archive Column', // title
+            array($this, 'markup_select_fields_cb'), // args array()
+            'rbr-settings-page', // page
+            'rbr-general-section', // section
+            array(
+                'name' => 'rbr_archive_column',
+                'value' => get_option('rbr_archive_column'),
+                'options' => array(
+                    'column-two' => __('Two Columns', 'rocket-books'),
+                    'column-three' => __('Three Columns', 'rocket-books'),
+                    'column-foue' => __('Four Columns', 'rocket-books'),
+                    'column-five' => __('Five Columns', 'rocket-books'),
+                ),
+            )
+        );
+
+        add_settings_field(
             'rbr_advanced_field1', // id
             'Advance Field 1', // title
             array($this, 'markup_text_fields_cb'), // cb-fun
@@ -258,6 +276,10 @@ class Rocket_Books_Admin
             'rbr_advanced_field2', // option_name required
             array('sanitize_callback' => 'sanitize_text_field')
         );
+        register_setting(
+            'rbr-settings-page-options-group', // option_group required
+            'rbr_archive_column' // option_name required
+        );
 
     }
 
@@ -277,6 +299,34 @@ class Rocket_Books_Admin
         ?>
 
     <input type="text" name="<?php echo $name; ?>" value="<?php echo $value; ?>" class="field-<?php echo $name; ?>">
+
+        <?php
+
+    }
+
+    /**
+     * Markup for Select field
+     **/
+
+    public function markup_select_fields_cb($args)
+    {
+        if (!is_array($args)) {
+            return null;
+        }
+
+        $name = (isset($args['name'])) ? esc_html($args['name']) : '';
+        $value = (isset($args['value'])) ? esc_html($args['value']) : '';
+        $options = (isset($args['options']) && is_array($args['options'])) ? $args['options'] : array();
+
+        ?>
+
+        <select name="<?php echo $name; ?>" class="field-<?php echo $name; ?>">
+            <?php
+foreach ($options as $option_key => $option_label):
+            echo "<option value='{$option_key}'" . selected($option_key, $value) . ">$option_label</option>";
+        endforeach;
+        ?>
+        </select>
 
         <?php
 
