@@ -266,6 +266,18 @@ class Rocket_Books_Admin
             ) // args array()
         );
 
+        add_settings_field(
+            'rbr_text_area', // id
+            'Some Message', // title
+            array($this, 'markup_text_area_cb'), // cb-fun
+            'rbr-settings-page', // page
+            'rbr-advanced-section', // section
+            array(
+                'name' => 'rbr_text_area',
+                'value' => get_option('rbr_text_area'),
+            ) // args array()
+        );
+
     }
 
     /**
@@ -296,6 +308,12 @@ class Rocket_Books_Admin
         register_setting(
             'rbr-settings-page-options-group', // option_group required
             'rbr_checkbox_field' // option_name required
+        );
+
+        register_setting(
+            'rbr-settings-page-options-group', // option_group required
+            'rbr_text_area', // option_name required
+            array('sanitize_callback' => 'sanitize_textarea_field')
         );
 
     }
@@ -361,7 +379,6 @@ foreach ($options as $option_key => $option_label):
         }
 
         $name = (isset($args['name'])) ? esc_html($args['name']) : '';
-        // $value = (isset($args['value'])) ? esc_html($args['value']) : '';
 
         ?>
 
@@ -371,4 +388,19 @@ foreach ($options as $option_key => $option_label):
 
     }
 
+    /**
+     * Markup for Textarea
+     */
+    public function markup_text_area_cb($args)
+    {
+        if (!is_array($args)) {
+            return null;
+        }
+
+        $name = (isset($args['name'])) ? esc_html($args['name']) : '';
+        $value = (isset($args['value'])) ? esc_html($args['value']) : '';
+        ?>
+    <textarea name="<?php echo $name; ?>" id="textarea-<?php echo $name; ?>" cols="50" rows="5"><?php echo $value; ?></textarea>
+        <?php
+}
 }
