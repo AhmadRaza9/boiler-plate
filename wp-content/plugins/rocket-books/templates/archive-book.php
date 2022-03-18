@@ -28,7 +28,7 @@ the_archive_title('<h1 class="page-title">', '</h1>');
 the_archive_description('<div class="taxonomy-description">', '</div>');
 ?>
 			</header><!-- .page-header -->
-            <div class="cpt-cards" id="cpt-main-sec">
+            <div class="cpt-cards column-three" id="cpt-main-sec">
             <?php
 // Start the loop.
 while (have_posts()):
