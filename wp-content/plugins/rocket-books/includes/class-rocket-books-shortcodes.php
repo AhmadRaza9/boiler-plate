@@ -58,6 +58,14 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
         public function book_list($atts, $content)
         {
 
+            $atts = shortcode_atts(
+                array(
+                    'limit' => 3,
+                ), // pairs
+                $atts, // atts
+                'book_list', // shortcode
+            );
+
             $loop_args = array(
                 'post_type' => 'book',
                 'posts_per_page' => $atts['limit'],
