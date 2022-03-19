@@ -60,7 +60,7 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
 
             $loop_args = array(
                 'post_type' => 'book',
-                'posts_per_page' => 5,
+                'posts_per_page' => $atts['limit'],
             );
 
             $loop = new WP_Query($loop_args);
