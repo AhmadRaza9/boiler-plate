@@ -4,7 +4,7 @@
 }
 
 .cpt-card {
-  background: #bbf6ff;
+  /* background: #bbf6ff; */
   padding: 1em;
 }
 .cpt-card:hover {
@@ -81,7 +81,7 @@
 }
 
 .book-entry-title {
-  background-color: #000dffc2;
+  /* background-color: #000dffc2; */
   color: white;
   padding-left: 10px;
 }
@@ -91,7 +91,7 @@
 }
 
 .book-meta-fields li {
-  background-color: darkblue;
+  background-color: rgb(1, 65, 17);
   padding: 0px 10px;
   color: white !important;
   list-style: none;
