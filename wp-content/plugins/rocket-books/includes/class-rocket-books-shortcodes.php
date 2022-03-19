@@ -81,8 +81,13 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
 
             ob_start();
             ?>
+            <style>
+                .cpt-shortcodes.cpt-cards  .cpt-card{
+                    background-color: <?php echo rbr_sanitize_color($atts['bgcolor']); ?>;
+                }
+            </style>
 
-<div class="cpt-cards <?php echo sanitize_html_class($grid_column); ?>" style="background-color:<?php echo $atts['bgcolor']; ?>;" id="cpt-main-sec">
+<div class="cpt-shortcodes cpt-cards <?php echo sanitize_html_class($grid_column); ?>" id="cpt-main-sec">
             <?php
 
             while ($loop->have_posts()):
