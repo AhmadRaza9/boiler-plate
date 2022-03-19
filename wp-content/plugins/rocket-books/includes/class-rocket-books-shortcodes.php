@@ -57,7 +57,38 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
 
         public function book_list($atts, $content)
         {
-            return "i am shortcode" . "<br/>" . var_export($atts, true) . "<br/>" . $content;
+
+            $loop_args = array(
+                'post_type' => 'book',
+                'posts_per_page' => 5,
+            );
+
+            $loop = new WP_Query($loop_args);
+
+            // $template_loader = rbr_get_template_loader();
+
+            ob_start();
+            ?>
+
+<div class="cpt-cards column-two" id="cpt-main-sec">
+            <?php
+
+            while ($loop->have_posts()):
+                $loop->the_post();
+
+                // $template_loader->get_template_part('archive/content', 'book');
+
+                include ROCKET_BOOKS_BASE_DIR . 'templates/archive/content-book.php';
+                // End the loop.
+            endwhile;
+            // restore original post
+            wp_reset_postdata();
+            ?>
+
+</div>
+
+            <?php
+return ob_get_clean();
         }
     }
 }
