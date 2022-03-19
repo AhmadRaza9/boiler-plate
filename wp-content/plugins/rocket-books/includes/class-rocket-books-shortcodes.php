@@ -31,6 +31,12 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
         private $version;
 
         /**
+         * It will be hold all the css for all shortcodes
+         */
+
+        protected $shortcode_css;
+
+        /**
          * Temple loader class
          */
 
@@ -58,6 +64,9 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
         public function setup_hooks()
         {
             add_action('wp_enqueue_scripts', array($this, 'register_style'));
+
+            add_action('get_footer', array($this, 'maybe_enqueue_scripts'));
+
         }
 
         /**
@@ -85,7 +94,7 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
                 array(
                     'limit' => get_option('posts_per_page'),
                     'column' => 3,
-                    'bgcolor' => '#d6d6d6',
+                    'bgcolor' => '',
                 ), // pairs
                 $atts, // atts
                 'book_list', // shortcode
@@ -104,21 +113,7 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
 
             // Step 1: Register a placeholder stylesheet
             // Step 2: Build up a css
-
-            $css = ".cpt-shortcodes.cpt-cards .cpt-card{background-color:{$atts['bgcolor']}}";
-
-            // Step 3: Add css to placeholder style
-
-            wp_add_inline_style(
-                $this->plugin_name . '-shortcodes',
-                $css
-            );
-
-            // Step 4: Enqueue Style
-
-            wp_enqueue_style(
-                $this->plugin_name . '-shortcodes',
-            );
+            $this->add_css_books_list($atts);
 
             ob_start();
             ?>
@@ -144,5 +139,42 @@ if (!class_exists('Rocket_Books_Shortcodes')) {
             <?php
 return ob_get_clean();
         }
+
+        /**
+         * Add css for books_list shortcode
+         **/
+
+        public function add_css_books_list($atts)
+        {
+            $css = '';
+            if (!empty($atts['bgcolor'])) {
+                $css .= ".cpt-shortcodes.cpt-cards .cpt-card{background-color:{$atts['bgcolor']}}";
+            }
+            $this->shortcode_css = $this->shortcode_css . $css;
+        }
+
+        /**
+         * Enqueue Styles and scripts only if required
+         **/
+
+        public function maybe_enqueue_scripts()
+        {
+            if (!empty($this->shortcode_css)) {
+
+                // Step 3: Add css to placeholder style
+                wp_add_inline_style(
+                    $this->plugin_name . '-shortcodes',
+                    $this->shortcode_css
+                );
+
+                // Step 4: Enqueue Style
+                wp_enqueue_style(
+                    $this->plugin_name . '-shortcodes',
+                );
+
+            }
+        }
+
     }
+
 }
