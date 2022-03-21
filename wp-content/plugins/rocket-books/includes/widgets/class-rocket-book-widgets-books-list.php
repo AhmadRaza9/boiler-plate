@@ -34,7 +34,35 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
         public function widget($args, $instance)
         {
             // outputs the content of the widget
-            echo "This is widget method";
+
+            // $args array keys
+            // array(
+            //     0 => 'name',
+            //     1 => 'id',
+            //     2 => 'description',
+            //     3 => 'class',
+            //     4 => 'before_widget',
+            //     5 => 'after_widget',
+            //     6 => 'before_title',
+            //     7 => 'after_title',
+            //     8 => 'before_sidebar',
+            //     9 => 'after_sidebar',
+            //     10 => 'show_in_rest',
+            //     11 => 'widget_id',
+            //     12 => 'widget_name',
+            // );
+
+            echo $args['before_widget'];
+            echo $args['before_title'];
+            // Title will be displayed here
+            echo "Books List";
+            echo $args['after_title'];
+            // echo "<pre>";
+            // var_export(array_keys($instance));
+            // echo "</pre>";
+
+            echo $args['after_widget'];
+
         }
 
         /**
@@ -45,7 +73,10 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
         public function form($instance)
         {
             // outputs the options form on admin
-            echo "This is form method";
+            echo "<pre>";
+            echo "This is Form Method";
+            echo "</pre>";
+
         }
 
         /**
