@@ -64,6 +64,21 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
 
             // Loops for CPTs
 
+            $loop_args = array(
+                'post_type' => 'book',
+                'posts_per_page' => $limit,
+            );
+
+            $loop = new WP_Query($loop_args);
+
+            echo "<div class='cpt-cards-widget'>";
+            // start the loop
+            while ($loop->have_posts()):
+                $loop->the_post();
+                include ROCKET_BOOKS_BASE_DIR . 'templates/widgets/content-book.php';
+            endwhile;
+            echo "</div>";
+
             echo $args['after_title'];
             echo $args['after_widget'];
 
