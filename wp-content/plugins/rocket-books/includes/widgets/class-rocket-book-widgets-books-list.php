@@ -56,7 +56,13 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
             echo $args['before_title'];
             // Title will be displayed here
             $title = isset($instance['title']) ? $instance['title'] : '';
-            echo esc_html($title);
+            $limit = isset($instance['limit']) ? $instance['limit'] : 5;
+
+            // echo esc_html($title);
+            // echo "<br/>";
+            // echo esc_html($limit);
+
+            // Loops for CPTs
 
             echo $args['after_title'];
             echo $args['after_widget'];
@@ -73,12 +79,20 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
             // outputs the options form on admin
 
             $title = isset($instance['title']) ? $instance['title'] : '';
+            $limit = isset($instance['limit']) ? $instance['limit'] : '';
 
             ?>
+
             <p>
-                <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'rocket-books');?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'rocket-books');?></label>
             <input type="text" class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo esc_html($title); ?>" >
             </p>
+
+            <p>
+            <label for="<?php echo esc_attr($this->get_field_id('limit')); ?>"><?php _e('Limit:', 'rocket-books');?></label>
+            <input type="number" class="widefat" id="<?php echo esc_attr($this->get_field_id('limit')); ?>" name="<?php echo esc_attr($this->get_field_name('limit')); ?>" value="<?php echo esc_html($limit); ?>" >
+            </p>
+
             <?php
 
         }
@@ -94,7 +108,9 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
         public function update($new_instance, $old_instance)
         {
             // processes widget options to be saved
-            $sanitized_instance = $new_instance;
+            $sanitized_instance['title'] = sanitize_text_field($new_instance['title']);
+            $sanitized_instance['limit'] = absint($new_instance['limit']);
+
             return $sanitized_instance;
         }
     }
