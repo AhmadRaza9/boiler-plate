@@ -55,12 +55,10 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
             echo $args['before_widget'];
             echo $args['before_title'];
             // Title will be displayed here
-            echo "Books List";
-            echo $args['after_title'];
-            echo "<pre>";
-            var_export($instance);
-            echo "</pre>";
+            $title = isset($instance['title']) ? $instance['title'] : '';
+            echo esc_html($title);
 
+            echo $args['after_title'];
             echo $args['after_widget'];
 
         }
@@ -74,11 +72,12 @@ if (!class_exists('Rocket_Books_Widget_Books_List')) {
         {
             // outputs the options form on admin
 
-            $title = $instance['title']
+            $title = isset($instance['title']) ? $instance['title'] : '';
 
             ?>
             <p>
-            <input type="text" class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo $title; ?>" >
+                <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'rocket-books');?></label>
+            <input type="text" class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo esc_html($title); ?>" >
             </p>
             <?php
 
