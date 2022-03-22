@@ -1,0 +1,27 @@
+/* Placehodler for shortcode css */
+.cpt-card-widget {
+  display: grid;
+  grid-template-columns: 60px auto;
+  margin-bottom: 1em;
+  border-left: 3px solid #d6d6d6;
+}
+
+.cpt-card-widget .book-entry-title {
+  margin: 0 0 0.25em;
+  font-size: 15px;
+}
+
+.book-entry-content {
+  padding: 0 0 0 0.5em;
+}
+
+.cpt-card-widget ul.book-meta-fields {
+  list-style: none;
+  margin: 0;
+  display: flex;
+}
+
+.cpt-card-widget ul.book-meta-fields > li {
+  margin-right: 1em;
+  font-size: 10px;
+}
