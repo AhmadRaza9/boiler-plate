@@ -52,6 +52,15 @@ if (!class_exists('Rocket_Books_Widget_Featured_Book')) {
                     'label' => __('BackgroundColor', 'rocket-books'),
                     'type' => 'color',
                 ),
+                array(
+                    'id' => 'book_id',
+                    'label' => __('Select Your Favorite Book', 'rocket-books'),
+                    'type' => 'posts',
+                    'options' => array(
+                        'post_type' => 'book',
+                    ),
+                ),
+
             );
 
             return $fields_args;
@@ -65,15 +74,22 @@ if (!class_exists('Rocket_Books_Widget_Featured_Book')) {
         public function widget_display($args, $instance)
         {
 
+            // echo "<pre>";
+            // var_export($instance);
+            // echo "</pre>";
+
             // text color
             $text_color = isset($instance['text_color']) ? $instance['text_color'] : '';
 
             // bg color
             $bg_color = isset($instance['bgcolor']) ? $instance['bgcolor'] : '';
 
+            // book id
+            $book_id = isset($instance['book_id']) ? $instance['book_id'] : '';
+
             // post id to be shown
 
-            echo do_shortcode("[book_list column=1 limit=1 color='$text_color' bgcolor='$bg_color']");
+            echo do_shortcode("[book_list column=1 limit=1 book_id=$book_id color='$text_color' bgcolor='$bg_color']");
 
         }
 
