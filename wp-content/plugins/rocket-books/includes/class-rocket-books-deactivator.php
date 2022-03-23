@@ -26,26 +26,29 @@ if (!defined('ABSPATH')) {
  * @author     Ahmad <raza.ataki@gmail.com>
  */
 
- if (!class_exists('Rocket_Books_Deactivator')) {
-class Rocket_Books_Deactivator
-{
-
-    /**
-     * Short Description. (use period)
-     *
-     * Long Description.
-     *
-     * @since    1.0.0
-     */
-    public static function deactivate()
+if (!class_exists('Rocket_Books_Deactivator')) {
+    class Rocket_Books_Deactivator
     {
 
-        // un register CPT
-        unregister_post_type('book');
+        /**
+         * Short Description. (use period)
+         *
+         * Long Description.
+         *
+         * @since    1.0.0
+         */
+        public static function deactivate()
+        {
 
-        // flush rewrite rule
-        flush_rewrite_rules();
+            // un register CPT
+            unregister_post_type('book');
+
+            // un regiater Taxonomy
+            unregister_taxonomy('genre');
+
+            // flush rewrite rule
+            flush_rewrite_rules();
+        }
+
     }
-
 }
- }
