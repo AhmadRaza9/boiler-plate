@@ -25,7 +25,26 @@ if (!class_exists('Rocket_Books_Widget_Featured_Book')) {
                 'desc' => __('Display Your Featured Book', 'rocket-books'),
             );
 
+            $this->set_fields($this->get_fields_args());
+
             parent::__construct($config_array);
+        }
+
+        /**
+         * fields arguments array
+         */
+
+        public function get_fields_args()
+        {
+
+            $fields_args = array(
+                array(
+                    'id' => 'title',
+                    'label' => __('Title', 'rocket-books'),
+                ),
+            );
+            return $fields_args;
+
         }
 
     }
