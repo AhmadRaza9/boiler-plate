@@ -586,12 +586,13 @@ foreach ($options as $option_key => $option_label):
                     ),
 
                     // fields for Advance Section
-                    'rbr_advance_section' => array(
+                    'rbr_advance_section' => apply_filters('rbr/admin/settings/advance/fields', array(
                         array(
                             'id' => 'advance',
                             'label' => __('Advanced', 'rocket-books'),
+
                         ),
-                    ),
+                    )),
                 ),
 
                 'links' => array(
