@@ -1,5 +1,10 @@
 <?php
 
+// If this file is call directyl, abort.
+if (!defined('ABSPATH')) {
+    die;
+}
+
 /**
  * Plugin Shortcode Functionaliity
  * @package    Rocket_Books

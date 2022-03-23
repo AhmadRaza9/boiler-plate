@@ -1,5 +1,10 @@
 <?php
 
+// If this file is call directyl, abort.
+if (!defined('ABSPATH')) {
+    die;
+}
+
 /**
  * Fired during plugin deactivation
  *

@@ -1,5 +1,10 @@
 <?php
 
+// If this file is call directyl, abort.
+if (!defined('ABSPATH')) {
+    die;
+}
+
 function rbr_is_single_or_archive_book()
 {
     return (is_singular('book') || rbr_is_archive_book()) ? true : false;
