@@ -23,6 +23,8 @@ if (!defined('ABSPATH')) {
  * @subpackage Rocket_Books/public
  * @author     Ahmad <raza.ataki@gmail.com>
  */
+
+ if (!class_exists('Rocket_Books_Post_Types')) {
 class Rocket_Books_Post_Types
 {
 
@@ -399,3 +401,4 @@ class Rocket_Books_Post_Types
     }
 
 }
+ }

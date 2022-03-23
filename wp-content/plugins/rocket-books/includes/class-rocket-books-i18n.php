@@ -29,6 +29,8 @@ if (!defined('ABSPATH')) {
  * @subpackage Rocket_Books/includes
  * @author     Ahmad <raza.ataki@gmail.com>
  */
+
+ if (!class_exists('Rocket_Books_i18n')) {
 class Rocket_Books_i18n {
 
 
@@ -50,3 +52,4 @@ class Rocket_Books_i18n {
 
 
 }
+ }
